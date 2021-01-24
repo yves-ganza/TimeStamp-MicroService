@@ -1,0 +1,23 @@
+{
+  "name": "timestamp-microservice",
+  "version": "1.0.0",
+  "description": "A simple timestamp api",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yves-ganza/TimeStamp-MicroService.git"
+  },
+  "author": "Yves Ganza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yves-ganza/TimeStamp-MicroService/issues"
+  },
+  "homepage": "https://github.com/yves-ganza/TimeStamp-MicroService#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
