@@ -13,17 +13,20 @@ app.get('/',(req, res)=>{
     res.sendFile(path)
 })
 
+app.get('/api/timestamp', (req, res)=>{
+  let newDate = new Date(Date.now())
+  res.json({"unix": newDate.getTime(), "utc": newDate.toUTCString()})
+})
 app.get('/api/timestamp/:date?', (req, res)=>{
     let stamp = req.params.date
     let re = /(\d{4})-(\d{2})-(\d{2}).*/
     try{
         let [_,year, month, day] = stamp.match(re)
-        let newDate = new Date(year, month, day)
-        res.json({"unix": newDate.getTime(), "utc": newDate.toString()})
+        let newDate = new Date(parseInt(year), parseInt(month)-1, parseInt(day))
+        res.json({"unix": newDate.getTime(), "utc": newDate.toUTCString()})
     }catch(err){
         let newDate = new Date(parseInt(stamp))
-        console.log(typeof(newDate))
-        newDate.getTime() && res.json({"unix": newDate.getTime(), "utc": newDate.toString()}) || res.json({"error": "Invalid Date"})
+        newDate.getTime() && res.json({"unix": newDate.getTime(), "utc": newDate.toUTCString()}) || res.json({"error": "Invalid Date"})
     }
 })
 
